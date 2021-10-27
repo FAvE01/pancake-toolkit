@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { darkColors } from "../../theme/colors";
 import { Box, Flex } from "../Box";
 import SocialLinks from "./Components/SocialLinks";
+import PrivacyLinks from "./Components/PrivacyLinks";
+import FooterMenuLinks from "./Components/FooterMenuLinks";
 
 export const StyledFooter = styled(Flex)`
   background: ${darkColors.backgroundAlt};
@@ -50,6 +52,13 @@ export const StyledToolsContainer = styled(Flex)`
 
 export const StyledSocialLinks = styled(SocialLinks)`
   border-bottom: 1px solid ${darkColors.cardBorder};
+`;
+
+export const StyledPrivacyLinks = styled(PrivacyLinks)`
+  border-bottom: 1px solid ${darkColors.cardBorder};
+`;
+export const StyledFooterMenuLinks = styled(FooterMenuLinks)`
+  border: none;
 `;
 
 export const StyledText = styled.span`

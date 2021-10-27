@@ -1,23 +1,30 @@
 import React from "react";
-import { baseColors, darkColors, lightColors } from "../../theme/colors";
+// import { baseColors, darkColors, lightColors } from "../../theme/colors";
 import { Flex, Box } from "../Box";
-import { Link } from "../Link";
+// import { Link } from "../Link";
 import {
   StyledFooter,
   StyledIconMobileContainer,
-  StyledList,
-  StyledListItem,
-  StyledText,
+  // StyledList,
+  // StyledListItem,
+  // StyledText,
   StyledSocialLinks,
   StyledToolsContainer,
+  StyledPrivacyLinks,
+  StyledFooterMenuLinks,
 } from "./styles";
 import { FooterProps } from "./types";
-import { ThemeSwitcher } from "../ThemeSwitcher";
-import LangSelector from "../LangSelector/LangSelector";
-import CakePrice from "../CakePrice/CakePrice";
-import { LogoWithTextIcon, ArrowForwardIcon } from "../Svg";
-import { Button } from "../Button";
-import { Colors } from "../..";
+// import { ThemeSwitcher } from "../ThemeSwitcher";
+// import LangSelector from "../LangSelector/LangSelector";
+// import CakePrice from "../CakePrice/CakePrice";
+import { LogoWithTextIcon } from "../Svg";
+// import { Button } from "../Button";
+// import { Colors } from "../..";
+
+interface SimpleFooterLink {
+  label: string;
+  href?: string;
+}
 
 const MenuItem: React.FC<FooterProps> = ({
   items,
@@ -42,63 +49,47 @@ const MenuItem: React.FC<FooterProps> = ({
           justifyContent="space-between"
           alignItems="flex-start"
           mb={["42px", null, "36px"]}
+          style={{ borderBottom: "1px solid #E9EAEB" }}
         >
-          {/* {items?.map((item) => (
-            <StyledList key={item.label}>
-              <StyledListItem>{item.label}</StyledListItem>
-              {item.items?.map(({ label, href, isHighlighted = false }) => (
-                <StyledListItem key={label}>
-                  {href ? (
-                    <Link
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      color={isHighlighted ? baseColors.warning : darkColors.text}
-                      bold={false}
-                    >
-                      {label}
-                    </Link>
-                  ) : (
-                    <StyledText>{label}</StyledText>
-                  )}
-                </StyledListItem>
-              ))}
-            </StyledList>
-          ))} */}
           <Box display={["none", null, "block"]}>
             <LogoWithTextIcon isDark width="160px" />
           </Box>
+          <StyledFooterMenuLinks
+            links={items as SimpleFooterLink[]}
+            order={[2]}
+            pb={["42px", null, "32px"]}
+            mb={["0", null, "32px"]}
+          />
         </Flex>
-        <StyledSocialLinks order={[2]} pb={["42px", null, "32px"]} mb={["0", null, "32px"]} />
+
         <StyledToolsContainer
           order={[1, null, 3]}
           flexDirection={["column", null, "row"]}
           justifyContent="space-between"
+          // style={{ borderBottom: "1px solid #9590A3" }}
         >
-          {/* <Flex order={[2, null, 1]} alignItems="center">
-            <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
-            <LangSelector
-              currentLang={currentLang}
-              langs={langs}
-              setLang={setLang}
-              color={darkColors.textSubtle as keyof Colors}
-              dropdownPosition="top-right"
+          <Flex order={[2, null, 1]} alignItems="center">
+            <StyledPrivacyLinks
+              order={[2]}
+              pb={["42px", null, "32px"]}
+              mb={["0", null, "32px"]}
+              style={{ border: "none" }}
             />
-          </Flex> */}
-          {/* <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
-            <Box mr="20px">
-              <CakePrice cakePriceUsd={cakePriceUsd} color={darkColors.textSubtle as keyof Colors} />
-            </Box>
-            <Button
-              as="a"
-              href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
-              target="_blank"
-              scale="sm"
-              endIcon={<ArrowForwardIcon color={lightColors.backgroundAlt} />}
-            >
-              {buyCakeLabel}
-            </Button>
-          </Flex> */}
+          </Flex>
+          <Flex
+            order={[1, null, 2]}
+            mb={["24px", null, "0"]}
+            justifyContent="space-between"
+            alignItems="center"
+            borderBottom="none"
+          >
+            <StyledSocialLinks
+              order={[2]}
+              pb={["42px", null, "32px"]}
+              mb={["0", null, "32px"]}
+              style={{ border: "none" }}
+            />
+          </Flex>
         </StyledToolsContainer>
       </Flex>
     </StyledFooter>
